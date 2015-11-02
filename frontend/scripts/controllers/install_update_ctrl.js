@@ -9,11 +9,12 @@ angular.module("protonet.platform").controller("InstallUpdateCtrl", function($sc
     $scope.status = {};
     for (var property in images) {
       if (images.hasOwnProperty(property)) {
-        var image = images[property];
+        var image      = images[property];
+        var shortLocal = image.local.slice(0,8);
         $scope.status[property] = {
-          local: image.local,
+          local: shortLocal,
           remote: image.remote,
-          upToDate: image.local === image.remote
+          upToDate: image.remote === shortLocal
         }
       }
     }
